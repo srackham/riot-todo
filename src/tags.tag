@@ -26,18 +26,16 @@
   <button onclick={clear}>Clear Completed</button>
   <script>
 
-    // TODO: Don't need self because event functions are bound to 'this'.
-    var self = this;
     var store = this.opts.store;
     var dispatcher = store.dispatcher;
 
     // this.update() called automatically after this event handler has executed.
     add(e) {
-      if (self.input.value) {
-        // Trigger event to all stores registered in central dispatch.
+      if (this.input.value) {
+        // Trigger event to all stores registered in dispatcher.
         // This allows loosely coupled stores/components to react to same events.
-        dispatcher.trigger(dispatcher.ADD_TODO, { title: self.input.value, done: false });
-        self.input.value = ''
+        dispatcher.trigger(dispatcher.ADD_TODO, { title: this.input.value, done: false });
+        this.input.value = ''
       }
     }
 
