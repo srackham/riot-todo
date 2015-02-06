@@ -52,13 +52,13 @@
 	
 	var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 	
-	var riot = _interopRequire(__webpack_require__(4));
+	var riot = _interopRequire(__webpack_require__(3));
 	
 	var TodoStore = _interopRequire(__webpack_require__(1));
 	
 	var dispatcher = _interopRequire(__webpack_require__(2));
 	
-	__webpack_require__(3);
+	__webpack_require__(4);
 	
 	var todoStore = new TodoStore(dispatcher);
 	dispatcher.addStore(todoStore);
@@ -78,7 +78,7 @@
 	var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 	
 	module.exports = TodoStore;
-	var Riot = _interopRequire(__webpack_require__(4));
+	var Riot = _interopRequire(__webpack_require__(3));
 	
 	function TodoStore(dispatcher) {
 	  var LOCALSTORAGE_KEY = "riot-todo";
@@ -171,67 +171,6 @@
 
 /***/ },
 /* 3 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var riot = __webpack_require__(4);
-	
-	riot.tag('todo-app', '<h3>Todos</h3> <todo-form store="{opts.store}"></todo-form> <todo-list store="{opts.store}"></todo-list> <p> Want a second fully synchronized list? Just declare another list component: no code required, no events to wire up! </p> <todo-list store="{opts.store}"></todo-list>', function(opts) {
-	    var dispatcher = this.opts.store.dispatcher;
-	    this.on('mount', function() {
-	      dispatcher.trigger(dispatcher.INIT_TODOS)
-	    });
-	
-	  
-	});
-	
-	
-	riot.tag('todo-form', '<form onsubmit="{add}"> <input name=\'input\' type=\'text\' placeholder=\'New Todo\' autofocus=\'true\'> <input type=\'submit\' value=\'Add Todo\'> </form> <button onclick="{clear}">Clear Completed</button>', function(opts) {
-	    var self = this;
-	    var store = this.opts.store;
-	    var dispatcher = store.dispatcher;
-	
-	    this.add = function(e) {
-	      if (self.input.value) {
-	
-	
-	        dispatcher.trigger(dispatcher.ADD_TODO, { title: self.input.value, done: false });
-	        self.input.value = ''
-	      }
-	    }.bind(this);
-	
-	
-	    this.clear = function(e) {
-	      dispatcher.trigger(dispatcher.CLEAR_TODOS);
-	    }.bind(this);
-	
-	  
-	});
-	
-	
-	riot.tag('todo-list', '<ul> <li each="{opts.store.todos}"> <todo-item store="{parent.opts.store}" todo="{__item}"> </li> </ul>', function(opts) {
-	    var self = this;
-	    var store = this.opts.store;
-	
-	    store.on(store.CHANGED_EVENT, function() {
-	      self.update()
-	    });
-	  
-	});
-	
-	
-	riot.tag('todo-item', '<span class="{done: opts.todo.done}" onclick="{toggle}"> {opts.todo.title} </span>', function(opts) {
-	    var dispatcher = this.opts.store.dispatcher;
-	
-	    this.toggle = function() {
-	      dispatcher.trigger(dispatcher.TOGGLE_TODO, opts.todo);
-	    }.bind(this);
-	
-	  
-	});
-
-
-/***/ },
-/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* Riot 2.0.7, @license MIT, (c) 2015 Muut Inc. + contributors */
@@ -940,6 +879,67 @@
 	  this.riot = riot
 	
 	})();
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var riot = __webpack_require__(3);
+	
+	riot.tag('todo-app', '<h3>Todos</h3> <todo-form store="{opts.store}"></todo-form> <todo-list store="{opts.store}"></todo-list> <p> Want a second fully synchronized list? Just declare another list component: no code required, no events to wire up! </p> <todo-list store="{opts.store}"></todo-list>', function(opts) {
+	    var dispatcher = this.opts.store.dispatcher;
+	    this.on('mount', function() {
+	      dispatcher.trigger(dispatcher.INIT_TODOS)
+	    });
+	
+	  
+	});
+	
+	
+	riot.tag('todo-form', '<form onsubmit="{add}"> <input name=\'input\' type=\'text\' placeholder=\'New Todo\' autofocus=\'true\'> <input type=\'submit\' value=\'Add Todo\'> </form> <button onclick="{clear}">Clear Completed</button>', function(opts) {
+	
+	    var store = this.opts.store;
+	    var dispatcher = store.dispatcher;
+	
+	    this.add = function(e) {
+	      if (this.input.value) {
+	
+	
+	        dispatcher.trigger(dispatcher.ADD_TODO, { title: this.input.value, done: false });
+	        this.input.value = ''
+	      }
+	    }.bind(this);
+	
+	
+	    this.clear = function(e) {
+	      dispatcher.trigger(dispatcher.CLEAR_TODOS);
+	    }.bind(this);
+	
+	  
+	});
+	
+	
+	riot.tag('todo-list', '<ul> <li each="{opts.store.todos}"> <todo-item store="{parent.opts.store}" todo="{__item}"> </li> </ul>', function(opts) {
+	    var self = this;
+	    var store = this.opts.store;
+	
+	    store.on(store.CHANGED_EVENT, function() {
+	      self.update()
+	    });
+	  
+	});
+	
+	
+	riot.tag('todo-item', '<span class="{done: opts.todo.done}" onclick="{toggle}"> {opts.todo.title} </span>', function(opts) {
+	    var dispatcher = this.opts.store.dispatcher;
+	
+	    this.toggle = function() {
+	      dispatcher.trigger(dispatcher.TOGGLE_TODO, opts.todo);
+	    }.bind(this);
+	
+	  
+	});
+
 
 /***/ }
 /******/ ])
