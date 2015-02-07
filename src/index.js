@@ -7,7 +7,7 @@
 import riot from 'riot';
 import TodoStore from './todo-store.js';
 import dispatcher from './dispatcher.js';
-import './tags.tag'
+import './tags.js'
 
 let todoStore = new TodoStore(dispatcher);
 dispatcher.addStore(todoStore);

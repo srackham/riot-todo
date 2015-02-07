@@ -15,11 +15,6 @@ module.exports = {
         query: {modules: 'common'}
       },
       {
-        test: /\.tag$/,
-        include: /src/,
-        loader: 'tag'
-      },
-      {
         test: /\.less$/,
         loader: 'style!css!less'
       },
