@@ -3,7 +3,7 @@
   "author": "Stuart Rackham",
   "description": "Didactic Flux-like ES6 Todo app written using Riot.",
   "license": "MIT",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "keywords": [
     "flux",
     "riot",
