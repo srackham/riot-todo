@@ -4,7 +4,7 @@ This minimalist didactic application is written using the React-like [Riot](http
 
 - Written in ES6.
 - Compiled using [6to5](http://6to5.org/).
-- Bundled with [Webpack](http://webpack.github.io/) using [tag-loader](https://www.npmjs.com/package/tag-loader).
+- Bundled with [Webpack](http://webpack.github.io/).
 - Uses browser LocalStorage for persistence.
 
 The app is a port of my [Flux Backbone Todos Example](https://github.com/srackham/flux-backbone-todo) and I wrote it to learn and evaluate Riot.
