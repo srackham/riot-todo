@@ -10,36 +10,35 @@ import Riot from 'riot';
 export default function TodoStore(dispatcher) {
   const LOCALSTORAGE_KEY = 'riot-todo';
   Riot.observable(this); // Riot provides our event emitter.
-  var self = this;
   this.CHANGED_EVENT = 'CHANGED_EVENT';
-  var json = window.localStorage.getItem(LOCALSTORAGE_KEY);
+  let json = window.localStorage.getItem(LOCALSTORAGE_KEY);
   this.todos = (json && JSON.parse(json)) || [];
   this.dispatcher = dispatcher;
 
-  this.changed = function() {
+  let triggerChanged = () => {
     // Brute force update all.
     window.localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(this.todos));
     this.trigger(this.CHANGED_EVENT);
   };
 
   // Event handlers.
-  self.on(dispatcher.ADD_TODO, function(todo) {
-    self.todos.push(todo);
-    self.changed();
+  this.on(dispatcher.ADD_TODO, (todo) => {
+    this.todos.push(todo);
+    triggerChanged();
   });
 
-  self.on(dispatcher.TOGGLE_TODO, function(todo) {
+  this.on(dispatcher.TOGGLE_TODO, (todo) => {
     todo.done = !todo.done;
-    self.changed();
-  });
-  self.on(dispatcher.CLEAR_TODOS, function() {
-    self.todos = self.todos.filter(todoItem => !todoItem.done);
-    self.changed();
+    triggerChanged();
   });
 
-  self.on(dispatcher.INIT_TODOS, function() {
-    self.changed();
-  })
+  this.on(dispatcher.CLEAR_TODOS, () => {
+    this.todos = this.todos.filter(todoItem => !todoItem.done);
+    triggerChanged();
+  });
 
+  this.on(dispatcher.INIT_TODOS, () => {
+    triggerChanged();
+  });
 
 }

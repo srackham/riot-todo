@@ -12,7 +12,7 @@ riot.tag('todo-app',
    <todo-list store="{opts.store}"></todo-list>`,
 
   function(opts) {
-    var dispatcher = this.opts.store.dispatcher;
+    let dispatcher = this.opts.store.dispatcher;
     this.on('mount', () => dispatcher.trigger(dispatcher.INIT_TODOS));
   }
 
@@ -28,8 +28,8 @@ riot.tag('todo-form',
    <button onclick="{clear}">Clear Completed</button>`,
 
   function(opts) {
-    var store = this.opts.store;
-    var dispatcher = store.dispatcher;
+    let store = this.opts.store;
+    let dispatcher = store.dispatcher;
 
     this.add = (e) => {
       if (this.input.value) {
@@ -55,7 +55,7 @@ riot.tag('todo-list',
    </ul>`,
 
   function(opts) {
-    var store = this.opts.store;
+    let store = this.opts.store;
     store.on(store.CHANGED_EVENT, () => this.update());
   }
 
@@ -69,7 +69,7 @@ riot.tag('todo-item',
    </span>`,
 
   function(opts) {
-    var dispatcher = this.opts.store.dispatcher;
+    let dispatcher = this.opts.store.dispatcher;
 
     this.toggle = () => {
       dispatcher.trigger(dispatcher.TOGGLE_TODO, opts.todo);
