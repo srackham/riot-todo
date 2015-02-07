@@ -1,4 +1,4 @@
-var riot = require('riot');
+import riot from 'riot';
 
 riot.tag('todo-app',
 
@@ -13,9 +13,7 @@ riot.tag('todo-app',
 
   function(opts) {
     var dispatcher = this.opts.store.dispatcher;
-    this.on('mount', function() {
-      dispatcher.trigger(dispatcher.INIT_TODOS)
-    });
+    this.on('mount', () => dispatcher.trigger(dispatcher.INIT_TODOS));
   }
 
 );
@@ -33,16 +31,16 @@ riot.tag('todo-form',
     var store = this.opts.store;
     var dispatcher = store.dispatcher;
 
-    this.add = function(e) {
+    this.add = (e) => {
       if (this.input.value) {
         dispatcher.trigger(dispatcher.ADD_TODO, {title: this.input.value, done: false});
         this.input.value = ''
       }
-    }.bind(this);
+    };
 
-    this.clear = function(e) {
+    this.clear = (e) => {
       dispatcher.trigger(dispatcher.CLEAR_TODOS);
-    }.bind(this);
+    };
   }
 
 );
@@ -57,12 +55,8 @@ riot.tag('todo-list',
   '</ul>',
 
   function(opts) {
-    var self = this;
     var store = this.opts.store;
-
-    store.on(store.CHANGED_EVENT, function() {
-      self.update()
-    });
+    store.on(store.CHANGED_EVENT, () => this.update());
   }
 
 );
@@ -77,9 +71,9 @@ riot.tag('todo-item',
   function(opts) {
     var dispatcher = this.opts.store.dispatcher;
 
-    this.toggle = function() {
+    this.toggle = () => {
       dispatcher.trigger(dispatcher.TOGGLE_TODO, opts.todo);
-    }.bind(this);
+    }
   }
 
 );
