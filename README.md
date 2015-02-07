@@ -1,4 +1,4 @@
-# Flux-like Riot Todo Application written
+# Flux-like Riot Todo Application
 
 This minimalist didactic application is written using the React-like [Riot](https://muut.com/riotjs/) UI library:
 
