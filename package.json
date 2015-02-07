@@ -25,6 +25,7 @@
   },
   "scripts": {
     "build": "webpack",
+    "deploy-gh-pages": "./deploy-gh-pages.sh",
     "start": "node ./bin/server.js"
   }
 }
