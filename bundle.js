@@ -46,7 +46,6 @@
 
 	/*
 	 Simple Todo app. Port of React/Flux Todo app https://github.com/srackham/flux-backbone-todo
-	 I did this to compare Riot with React.
 	 */
 	"use strict";
 	
@@ -81,41 +80,41 @@
 	var Riot = _interopRequire(__webpack_require__(4));
 	
 	function TodoStore(dispatcher) {
+	  var _this = this;
 	  var LOCALSTORAGE_KEY = "riot-todo";
 	  Riot.observable(this); // Riot provides our event emitter.
-	  var self = this;
 	  this.CHANGED_EVENT = "CHANGED_EVENT";
 	  var json = window.localStorage.getItem(LOCALSTORAGE_KEY);
 	  this.todos = json && JSON.parse(json) || [];
 	  this.dispatcher = dispatcher;
 	
-	  this.changed = function () {
+	  var triggerChanged = function () {
 	    // Brute force update all.
-	    window.localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(this.todos));
-	    this.trigger(this.CHANGED_EVENT);
+	    window.localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(_this.todos));
+	    _this.trigger(_this.CHANGED_EVENT);
 	  };
 	
 	  // Event handlers.
-	  self.on(dispatcher.ADD_TODO, function (todo) {
-	    self.todos.push(todo);
-	    self.changed();
+	  this.on(dispatcher.ADD_TODO, function (todo) {
+	    _this.todos.push(todo);
+	    triggerChanged();
 	  });
 	
-	  self.on(dispatcher.TOGGLE_TODO, function (todo) {
+	  this.on(dispatcher.TOGGLE_TODO, function (todo) {
 	    todo.done = !todo.done;
-	    self.changed();
+	    triggerChanged();
 	  });
-	  self.on(dispatcher.CLEAR_TODOS, function () {
-	    self.todos = self.todos.filter(function (todoItem) {
+	
+	  this.on(dispatcher.CLEAR_TODOS, function () {
+	    _this.todos = _this.todos.filter(function (todoItem) {
 	      return !todoItem.done;
 	    });
-	    self.changed();
+	    triggerChanged();
 	  });
 	
-	  self.on(dispatcher.INIT_TODOS, function () {
-	    self.changed();
+	  this.on(dispatcher.INIT_TODOS, function () {
+	    triggerChanged();
 	  });
-	
 	}
 
 /***/ },
