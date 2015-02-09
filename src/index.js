@@ -1,6 +1,5 @@
 /*
  Simple Todo app. Port of React/Flux Todo app https://github.com/srackham/flux-backbone-todo
- I did this to compare Riot with React.
  */
 'use strict';
 
