@@ -16,7 +16,7 @@ module.exports = {
   },
 
   trigger() {
-    var args = [].slice.call(arguments);
+    let args = [].slice.call(arguments);
     console.log('dispatcher: trigger: ' + args);
     this._stores.forEach(function(el) {
       el.trigger.apply(null, args)
