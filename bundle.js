@@ -99,7 +99,7 @@
 	});
 	
 	
-	riot.tag("todo-list", "<ul>\n     <li each=\"{item in opts.store.todos}\">\n       <todo-item store=\"{parent.opts.store}\" todo=\"{item}\">\n     </li>\n   </ul>", function (opts) {
+	riot.tag("todo-list", "<ul>\n     <li each=\"{todo in opts.store.todos}\">\n       <todo-item store=\"{parent.opts.store}\" todo=\"{todo}\">\n     </li>\n   </ul>", function (opts) {
 	  var _this = this;
 	  var store = this.opts.store;
 	  store.on(store.CHANGED_EVENT, function () {
