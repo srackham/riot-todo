@@ -49,8 +49,8 @@ riot.tag('todo-form',
 riot.tag('todo-list',
 
   `<ul>
-     <li each="{item in opts.store.todos}">
-       <todo-item store="{parent.opts.store}" todo="{item}">
+     <li each="{todo in opts.store.todos}">
+       <todo-item store="{parent.opts.store}" todo="{todo}">
      </li>
    </ul>`,
 
