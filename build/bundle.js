@@ -186,7 +186,7 @@
 	});
 	
 	
-	riot.tag("todo-form", "<form onsubmit=\"{add}\">\n     <input name=\"input\" type=\"text\" placeholder=\"New Todo\" autofocus=\"true\"/>\n     <input type=\"submit\" value=\"Add Todo\">\n   </form>\n   <button onclick=\"{clear}\">Clear Completed</button>", function (opts) {
+	riot.tag("todo-form", "<form onsubmit=\"{add}\">\n     <input name=\"input\" type=\"text\" placeholder=\"New Todo\" autofocus=\"true\">\n     <input type=\"submit\" value=\"Add Todo\">\n   </form>\n   <button onclick=\"{clear}\">Clear Completed</button>", function (opts) {
 	  var _this = this;
 	  var store = this.opts.store;
 	  var dispatcher = store.dispatcher;
