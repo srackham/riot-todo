@@ -18,9 +18,10 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "6to5": "^3.5.3",
-    "6to5-loader": "^3.0.0",
-    "riot": "^2.0.8",
+    "babel": "^4.0.1",
+    "babel-core": "^4.0.1",
+    "babel-loader": "^4.0.0",
+    "riot": "^2.0.9",
     "webpack": "^1.5.3"
   },
   "scripts": {

@@ -11,7 +11,7 @@ module.exports = {
       {
         test: /\.js$/,
         include: /src/,
-        loader: '6to5-loader',
+        loader: 'babel-loader',
         query: {modules: 'common'}
       },
       {
