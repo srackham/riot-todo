@@ -22,11 +22,12 @@
     "babel-core": "^4.0.1",
     "babel-loader": "^4.0.0",
     "riot": "^2.0.9",
-    "webpack": "^1.5.3"
+    "webpack": "^1.5.3",
+    "webpack-dev-server": "^1.7.0"
   },
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --progress --colors",
     "deploy-gh-pages": "./deploy-gh-pages.sh",
-    "start": "node ./bin/server.js"
+    "start": "webpack-dev-server --devtool eval --progress --colors --hot --content-base build"
   }
 }
