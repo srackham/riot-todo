@@ -18,7 +18,7 @@ fi
 webpack
 
 # Copy built files to gh-pages.
-cp -p ./dist/* ./gh-pages/
+cp -p ./build/* ./gh-pages/
 
 cd ./gh-pages/
 
