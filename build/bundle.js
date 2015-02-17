@@ -55,9 +55,9 @@
 	
 	var TodoStore = _interopRequire(__webpack_require__(1));
 	
-	var dispatcher = _interopRequire(__webpack_require__(2));
+	var dispatcher = _interopRequire(__webpack_require__(3));
 	
-	__webpack_require__(3);
+	__webpack_require__(2);
 	
 	var todoStore = new TodoStore(dispatcher);
 	dispatcher.addStore(todoStore);
@@ -123,57 +123,6 @@
 
 	"use strict";
 	
-	// RiotControl dispatcher with Todo actions and formatted as node commonjs module.
-	// https://github.com/jimsparkman/RiotControl
-	
-	module.exports = {
-	
-	  // Dispatcher actions.
-	  ADD_TODO: "ADD_TODO",
-	  TOGGLE_TODO: "TOGGLE_TODO",
-	  CLEAR_TODOS: "CLEAR_TODOS",
-	  INIT_TODOS: "INIT_TODOS",
-	
-	  _stores: [],
-	
-	  addStore: function addStore(store) {
-	    this._stores.push(store);
-	  },
-	
-	  trigger: function trigger() {
-	    var args = [].slice.call(arguments);
-	    console.log("dispatcher: trigger: " + args);
-	    this._stores.forEach(function (el) {
-	      el.trigger.apply(null, args);
-	    });
-	  },
-	
-	  on: function on(ev, cb) {
-	    this._stores.forEach(function (el) {
-	      el.on(ev, cb);
-	    });
-	  },
-	
-	  off: function off(ev, cb) {
-	    this._stores.forEach(function (el) {
-	      if (cb) el.off(ev, cb);else el.off(ev);
-	    });
-	  },
-	
-	  one: function one(ev, cb) {
-	    this._stores.forEach(function (el) {
-	      el.one(ev, cb);
-	    });
-	  }
-	
-	};
-
-/***/ },
-/* 3 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
 	var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 	
 	var riot = _interopRequire(__webpack_require__(4));
@@ -220,6 +169,57 @@
 	    dispatcher.trigger(dispatcher.TOGGLE_TODO, opts.todo);
 	  };
 	});
+
+/***/ },
+/* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	// RiotControl dispatcher with Todo actions and formatted as node commonjs module.
+	// https://github.com/jimsparkman/RiotControl
+	
+	module.exports = {
+	
+	  // Dispatcher actions.
+	  ADD_TODO: "ADD_TODO",
+	  TOGGLE_TODO: "TOGGLE_TODO",
+	  CLEAR_TODOS: "CLEAR_TODOS",
+	  INIT_TODOS: "INIT_TODOS",
+	
+	  _stores: [],
+	
+	  addStore: function addStore(store) {
+	    this._stores.push(store);
+	  },
+	
+	  trigger: function trigger() {
+	    var args = [].slice.call(arguments);
+	    console.log("dispatcher: trigger: " + args);
+	    this._stores.forEach(function (el) {
+	      el.trigger.apply(null, args);
+	    });
+	  },
+	
+	  on: function on(ev, cb) {
+	    this._stores.forEach(function (el) {
+	      el.on(ev, cb);
+	    });
+	  },
+	
+	  off: function off(ev, cb) {
+	    this._stores.forEach(function (el) {
+	      if (cb) el.off(ev, cb);else el.off(ev);
+	    });
+	  },
+	
+	  one: function one(ev, cb) {
+	    this._stores.forEach(function (el) {
+	      el.one(ev, cb);
+	    });
+	  }
+	
+	};
 
 /***/ },
 /* 4 */
