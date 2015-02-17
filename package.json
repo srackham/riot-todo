@@ -3,7 +3,7 @@
   "author": "Stuart Rackham",
   "description": "Didactic Flux-like ES6 Todo app written using Riot.",
   "license": "MIT",
-  "version": "0.1.1",
+  "version": "0.1.5",
   "keywords": [
     "flux",
     "riot",
@@ -28,6 +28,6 @@
   "scripts": {
     "build": "webpack --progress --colors",
     "deploy-gh-pages": "./deploy-gh-pages.sh",
-    "start": "webpack-dev-server --devtool eval --progress --colors --hot --content-base build"
+    "start": "webpack-dev-server --progress --colors --content-base build"
   }
 }
