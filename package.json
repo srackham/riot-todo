@@ -18,11 +18,11 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "babel": "^4.0.1",
-    "babel-core": "^4.0.1",
-    "babel-loader": "^4.0.0",
-    "riot": "^2.0.9",
-    "webpack": "^1.5.3",
+    "babel": "^4.7.12",
+    "babel": "^4.7.12",
+    "babel-loader": "^4.1.0",
+    "riot": "^2.0.13",
+    "webpack": "^1.7.3",
     "webpack-dev-server": "^1.7.0"
   },
   "scripts": {
