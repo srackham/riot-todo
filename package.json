@@ -19,7 +19,6 @@
   "dependencies": {},
   "devDependencies": {
     "babel": "^4.7.12",
-    "babel": "^4.7.12",
     "babel-loader": "^4.1.0",
     "riot": "^2.0.13",
     "webpack": "^1.7.3",
