@@ -43,5 +43,5 @@ and run:
 
         npm start
 
-6. Open your Web browser at <http://localhost:8888/>.
+6. Open your Web browser at <http://localhost:8080/>.
 
